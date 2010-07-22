@@ -1,0 +1,100 @@
+Created quick scaffold called Job
+
+-------------------
+Gemfile
+===================
+gem 'devise', '1.1.rc1'  # Do not use rc2, it requires make which is unavailable on windows
+
+-------------------
+
+rails generate devise_install  # cannot use devise:install until RC2
+
+-------------------
+Output from devise_install
+===============================================================================
+
+Some setup you must do manually if you haven't yet:
+
+  1. Setup default url options for your specific environment. Here is an
+     example of development environment:
+
+       config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+     This is a required Rails configuration. In production is must be the
+     actual host of your application
+
+  2. Ensure you have defined root_url to *something* in your config/routes.rb.
+     For example:
+
+       root :to => "home#index"
+
+  3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+     For example:
+
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+
+===============================================================================
+
+-------------------
+/config/routes.rb
+===================
+  root :to => "jobs#index"
+
+-------------------
+/app/views/layouts/application.html.erb
+===================
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
+-------------------
+/config/enviroment/development.rb
+===================
+config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+-------------------
+rails generate devise User
+
+modify model and migration to include correct modules
+
+rake db:migrate   # Apparently this is only working from the C: drive (or whatever drive rails is installed on)
+
+-------------------
+/app/views/layout/application.html.erb
+===================
+
+    <% if user_signed_in? %>
+      Signed in as <%= current_user.email %> |
+      <%= link_to "logout", destroy_user_session_path %>
+    <% else %>
+      <%= link_to "register", new_user_registration_path %> or <%= link_to "login", new_user_session_path %>
+    <% end %>
+    
+-------------------
+/app/controller/jobs_controller.rb
+===================
+  before_filter :authenticate_user!   #:except => [:show, :index, :new, :edit]
+
+-------------------
+
+rails generate devise_views     #devise:views for RC2+
+  # generates all the views so you can edit them to match your application
+  
+-------------------
+/locales/devise.en.yml
+===================
+  # Able to modify the output messages
+  
+-------------------
+/initializers/devise.rb
+===================
+  # Able to modify validations
+  
+-------------------
+/config/routes.rb
+===================
+  devise_for :users, :path_names => {:sign_up => "register" }  
+    #can modify path names to match your application
+ 
+
+

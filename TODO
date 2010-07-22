@@ -1,0 +1,15 @@
+TODO: 
+-------------------
+ Additional fields for user model such as phone, address, etc
+   Consider one-to-one db for performance issues
+   
+  Figure out why rake db:migrate only works on c: drive
+   
+  Modify Devise views to match application
+  
+  Modify output messages
+  
+  Modify path_names in Routes.rb
+  
+  
+-------------------
