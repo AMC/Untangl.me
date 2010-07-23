@@ -96,5 +96,49 @@ rails generate devise_views     #devise:views for RC2+
   devise_for :users, :path_names => {:sign_up => "register" }  
     #can modify path names to match your application
  
+<hr />
+<h3>CanCan</h3>
 
+-------------------
+/app/models/user.rb
+===================
+
+  attr_accessible :email, :password, :password_confirmation, :role  # Add roles or it's unaccessable brainiac.
+  
+  ROLES = %w[admin csr trial member guest] # After the attr_accessible line or it won't work. No extra whitespaces
+  
+-------------------
+/app/views/devise/registrations/edit.html.erb
+/app/views/devise/registrations/new.html.erb
+===================
+
+  <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>  # Security hole, fix later.
+  
+-------------------
+/app/model/ability.rb
+===================
+
+class Ability
+  include CanCan::Ability
+
+  def initialize(user)
+    if user.role == 'admin'
+      can :manage, :all
+    elsif user.role == 'member'
+      can :read, :all
+    else
+      can :read, :all
+    end
+  end
+
+end
+
+-------------------
+All filtered controllers such as:
+/app/controllers/jobs_controller.rb
+===================
+
+  load_and_authorize_resource
+  
+  
 

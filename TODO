@@ -11,5 +11,8 @@ TODO:
   
   Modify path_names in Routes.rb
   
+  Fix role assignment so user does not pick own role
+  
+  
   
 -------------------
