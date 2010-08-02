@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <script> 
+	    function startPopup() {
+	      chrome.tabs.getSelected(null, function(tab) { document.getElementById('x').innerHTML = tab.url
+	        url = "http://freezing-day-74.heroku.com/jobs/new?url=" + tab.url +"&title=" + tab.title
+	        document.getElementById('x').innerHTML = url
+	        window.open(url,'mywindow','width=400,height=200')
+	      })
+      }
+    </script>
+    <link rel="stylesheet" href="style.css" type="text/css"> 
+  </head>
+  <body class="delicious">
+  <div id="x">x</div>
+	<input type="button" onclick="startPopup()" value="Save a new Bookmark " />
+  </body>
+</html>

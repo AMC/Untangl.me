@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.0.beta4'
 gem 'devise', '1.1.rc1'    #Do not use RC2, it requires make which is not available on Windows
 gem 'cancan'
+gem 'delayed_job'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

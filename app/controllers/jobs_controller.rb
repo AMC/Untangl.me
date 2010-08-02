@@ -29,7 +29,8 @@ class JobsController < ApplicationController
   # GET /jobs/new.xml
   def new
     @job = Job.new
-
+    @job.url = params[:url]
+    @job.name = params[:title]
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @job }
@@ -48,6 +49,7 @@ class JobsController < ApplicationController
 
     respond_to do |format|
       if @job.save
+        Delayed::Job.enqueue ScrapeWebsiteJob.new(@job.id)
         format.html { redirect_to(@job, :notice => 'Job was successfully created.') }
         format.xml  { render :xml => @job, :status => :created, :location => @job }
       else
