@@ -54,3 +54,14 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
+
+.container {
+	background-color:#ccc;
+	width:500px;
+	padding:5px;
+	border:1px solid black;
+}
+
+.container table{
+	border:1px solid black;
+}

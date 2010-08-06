@@ -1,4 +1,8 @@
 Devise::Application.routes.draw do |map|
+  resources :events
+
+  resources :contacts
+
   resources :jobs
 
   devise_for :users
