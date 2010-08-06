@@ -2,7 +2,7 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.xml
   def index
-    @contacts = Contact.all
+    @contacts = Contact.where(["user_id = ?", current_user])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,6 +41,8 @@ class ContactsController < ApplicationController
   # POST /contacts.xml
   def create
     @contact = Contact.new(params[:contact])
+    
+    @contact.user_id = current_user.id
 
     respond_to do |format|
       if @contact.save

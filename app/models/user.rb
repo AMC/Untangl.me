@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :jobs
+  has_many :contacts
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :lockable, :confirmable, and :timeoutable
