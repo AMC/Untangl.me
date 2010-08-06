@@ -7,7 +7,7 @@ class Ability
     elsif user.role == 'member'
       can :read, :all
     else
-      can :read, :all
+      can :manage, :all
     end
   end
 

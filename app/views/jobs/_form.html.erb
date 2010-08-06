@@ -12,8 +12,32 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :user_id %><br/>
+    <%= f.text_field :user_id %>  
+  </div>
+  <div class="field">
+    <%= f.label :company_id %>(company id)<br />
+    <%= f.text_field :company_id %>
+  </div>
+  <div class="field">
+    <%= f.label :name %>(job name)<br />
     <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :contact_phone %><br />
+    <%= f.text_field :contact_phone %>
+  </div>
+  <div class="field">
+    <%= f.label :contact_fax %><br />
+    <%= f.text_field :contact_fax %>
+  </div>
+  <div class="field">
+    <%= f.label :contact_cell %><br />
+    <%= f.text_field :contact_cell %>
+  </div>
+  <div class="field">
+    <%= f.label :contact_email %><br />
+    <%= f.text_field :contact_email %>
   </div>
   <div class="field">
     <%= f.label :description %><br />

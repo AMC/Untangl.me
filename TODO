@@ -13,6 +13,14 @@ TODO:
   
   Fix role assignment so user does not pick own role
   
+  Add partials for new and edit Users
   
+  Remove role selection from edit Users
+  
+  join other tables for Jobs and other correspondances
+  
+  Change company_id in Company display to a lookup/display (in jobs)
+  
+  Assign job.user_id to current user
   
 -------------------
