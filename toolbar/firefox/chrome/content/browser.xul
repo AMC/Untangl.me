@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://imagecapture/skin/skin.css" type="text/css"?>
+<!DOCTYPE linktargetfinder SYSTEM "chrome://linktargetfinder/locale/translations.dtd">
+<overlay id="sample" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+		<script type="application/x-javascript" src="chrome://global/content/nsUserSettings.js" />
+
+  	<!-- screenGrab JS import -->
+  	<script type="application/x-javascript" src="chrome://screengrab/content/Upload.js" />
+  	<script type="application/x-javascript" src="chrome://screengrab/content/Includes.js" />
+  	<script type="application/x-javascript" src="chrome://screengrab/content/Dimensions.js" />
+  	<script type="application/x-javascript" src="chrome://screengrab/content/NsUtils.js" />
+  	<script type="application/x-javascript" src="chrome://screengrab/content/JavaGrab.js" />
+  	<script type="application/x-javascript" src="chrome://screengrab/content/NsGrab.js" />
+  	<script type="application/x-javascript" src="chrome://screengrab/content/Screengrab.js" />
+  	<script type="application/x-javascript" src="chrome://screengrab/content/Selection.js" />
+
+		<menupopup id="menu_ToolsPopup">
+			<menuitem label="&upload;" key="link-target-finder-run-key" oncommand="Screengrab.uploadCompleteDocument()"/>
+		</menupopup>
+
+</overlay>
