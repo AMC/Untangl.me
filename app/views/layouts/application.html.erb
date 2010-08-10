@@ -9,8 +9,14 @@
 <body>
   <div id="user_nav">
     <% if user_signed_in? %>
-      Signed in as <%= current_user.email %> |
+      Signed in as <%= current_user.email %><br/>
+      <%= link_to "Home", root_url %> |
+      <%= link_to "My Account", edit_user_registration_path(current_user) %> |
+      <%= link_to 'New Job', new_job_path %> |
+      <%= link_to "Contacts", contacts_path %> |
+      <%= link_to "New Events", new_event_path %> |
       <%= link_to "logout", destroy_user_session_path %>
+      
     <% else %>
       <%= link_to "register", new_user_registration_path %> or <%= link_to "login", new_user_session_path %>
     <% end %>

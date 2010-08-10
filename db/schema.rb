@@ -9,19 +9,78 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100722232715) do
+ActiveRecord::Schema.define(:version => 20100806220852) do
+
+  create_table "contacts", :force => true do |t|
+    t.string   "name"
+    t.string   "phone"
+    t.string   "fax"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip"
+    t.string   "category"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.datetime "date"
+    t.integer  "job_id"
+    t.string   "type"
+    t.text     "note"
+    t.integer  "user_id"
+    t.boolean  "completed"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "jobs", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "url"
+    t.text     "scrape_content"
+    t.boolean  "processed",               :default => false
+    t.string   "company_id"
+    t.string   "user_id"
+    t.string   "contact_email"
+    t.string   "contact_phone"
+    t.string   "contact_fax"
+    t.string   "contact_cell"
+    t.string   "source"
+    t.string   "source_link"
+    t.string   "original_posting"
+    t.text     "original_posting_scrape"
+    t.integer  "resume_id"
+    t.boolean  "resume_submitted"
+    t.integer  "cover_letter_id"
+    t.boolean  "cover_letter_submitted"
+    t.string   "status"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                               :default => "", :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
-    t.string   "password_salt",                       :default => "", :null => false
+    t.string   "email",                               :default => "",      :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => "",      :null => false
+    t.string   "password_salt",                       :default => "",      :null => false
     t.string   "reset_password_token"
     t.string   "remember_token"
     t.datetime "remember_created_at"
@@ -32,7 +91,15 @@ ActiveRecord::Schema.define(:version => 20100722232715) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "role"
+    t.string   "role",                                :default => "trial"
+    t.string   "name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip"
+    t.string   "phone"
+    t.string   "fax"
+    t.datetime "expires"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

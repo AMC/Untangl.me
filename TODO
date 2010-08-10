@@ -13,6 +13,22 @@ TODO:
   
   Fix role assignment so user does not pick own role
   
+  Add partials for new and edit Users
   
+  Remove role selection from edit Users
+  
+  join other tables for Jobs and other correspondances
+  
+  Change company_id in Company display to a lookup/display (in jobs)
+  
+  Assign job.user_id to current user
+  
+  Ask will about polymorphic notes for everything
+  
+  Make New Events a pop-out Div instead of a new page
+  
+  contact type should be radio buttons (or drop-down list for losers)
+  
+  change show link in contacts to actual contact name (make contact name the link)
   
 -------------------

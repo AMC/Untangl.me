@@ -1,9 +1,14 @@
 Devise::Application.routes.draw do |map|
+  resources :events
+
+  resources :contacts
+
   resources :jobs
 
   devise_for :users
 
   root :to => "jobs#index"
+  #match ''
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

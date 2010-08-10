@@ -6,7 +6,8 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.xml
   def index
-    @jobs = Job.all
+    #@jobs = current_user.jobs // alternate job find method
+    @jobs = Job.where(["user_id = ?", current_user])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -46,6 +47,8 @@ class JobsController < ApplicationController
   # POST /jobs.xml
   def create
     @job = Job.new(params[:job])
+    
+    @job.user_id = current_user.id
 
     respond_to do |format|
       if @job.save
