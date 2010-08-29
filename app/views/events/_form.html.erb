@@ -1,3 +1,4 @@
+<% @event.tags.build %> 
 <%= form_for(@event) do |f| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
@@ -39,6 +40,8 @@
     <%= f.label :completed %><br />
     <%= f.check_box :completed %>
   </div>
+  <h2>Tags</h2>
+  <%= render :partial => 'tags/form' %>
   <div class="actions">
     <%= f.submit %>
   </div>

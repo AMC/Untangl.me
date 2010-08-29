@@ -1,6 +1,7 @@
 require 'open-uri'
 class Job < ActiveRecord::Base
   belongs_to :users
+  has_many :tags
   
   #on create, before save (ask will!)
   
@@ -9,6 +10,9 @@ class Job < ActiveRecord::Base
     :contact_phone, :contact_fax, :contact_cell, :source, :source_link,
     :original_posting, :original_posting_scrape, :resume_id, :resume_submitted,
     :cover_letter_id, :cover_letter_submitted, :description
+    
+    accepts_nested_attributes_for :tags, :allow_destroy => :true,
+    	:reject_if => proc { |attrs| attrs.all? {|k, v| v.blank?} }
     
   
   def scrape_url
