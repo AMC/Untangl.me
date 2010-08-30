@@ -1,5 +1,67 @@
 <% content_for :body do %>
-	<div class="container" >
-		<h1>Listing stuff here</h1>
+	<div id="jobs" class="container" >
+		<h1>Listing jobs</h1>	
+		<table>
+		  <tr>
+		    <th>Name</th>
+		    <th>Company ID</th>
+		    <th>Description</th>
+		    <th></th>
+		    <th></th>
+		    <th></th>
+		  </tr>
+		
+		<% @jobs.each do |job| %>
+		  <tr>
+		    <td><%= link_to job.name, job %></td>
+		    <td><%= job.company_id %></td>
+		    <td><%= job.description %></td>
+		    <td><%= link_to 'Edit', edit_job_path(job) %></td>
+		    <td><%= link_to 'Destroy', job, :confirm => 'Are you sure?', :method => :delete %></td>
+		  </tr>
+		<% end %>
+		</table>
+		
+		<br />
+		
+		<%= link_to 'New Job', new_job_path %>
 	</div>
+	<div id="events" class="container">
+		<h1>Listing events</h1>
+		
+		<table>
+		  <tr>
+		    <th>Name</th>
+		    <th>Date</th>
+		    <th>Job</th>
+		    <th>Type</th>
+		    <th>Note</th>
+		    <th>User</th>
+		    <th>Completed</th>
+		    <th></th>
+		    <th></th>
+		    <th></th>
+		  </tr>
+		
+		<% @events.each do |event| %>
+		  <tr>
+		    <td><%= event.name %></td>
+		    <td><%= event.date %></td>
+		    <td><%= event.job_id %></td>
+		    <td><%= event.type %></td>
+		    <td><%= event.note %></td>
+		    <td><%= event.user_id %></td>
+		    <td><%= event.completed %></td>
+		    <td><%= link_to 'Show', event %></td>
+		    <td><%= link_to 'Edit', edit_event_path(event) %></td>
+		    <td><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></td>
+		  </tr>
+		<% end %>
+		</table>
+		
+		<br />
+		
+		<%= link_to 'New Event', new_event_path %>
+	</div>
+	
 <% end %>

@@ -8,6 +8,8 @@ class JobsController < ApplicationController
   def index
     #@jobs = current_user.jobs // alternate job find method
     @jobs = Job.where(["user_id = ?", current_user])
+    
+    @events = Event.where(["user_id = ?", current_user])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,7 +20,9 @@ class JobsController < ApplicationController
   # GET /jobs/1
   # GET /jobs/1.xml
   def show
-    @job = Job.find(params[:id])
+    @job = Job.find(params[:id])    
+    
+    @event = Event.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
