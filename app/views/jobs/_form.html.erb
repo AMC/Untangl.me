@@ -1,4 +1,3 @@
-<% @job.tags.build %> 
 <%= form_for(@job) do |f| %>
   <% if @job.errors.any? %>
     <div id="error_explanation">
@@ -41,8 +40,6 @@
     <%= f.text_area :description %>
   </div>
   <%= f.hidden_field :url %>
-  <h2>Tags</h2>
-  <%= render :partial => 'tags/form' %>
   <div class="actions">
     <%= f.submit %>
   </div>

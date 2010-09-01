@@ -46,10 +46,6 @@
   <%= @job.cover_letter_id %><br/>
   Sent? <%= @job.cover_letter_submitted %>
 </p>
-<p>
-	<b>Tags:</b>
-	<%= join_tags(@job) %>
-</p>
 
 
 <%= link_to 'Edit', edit_job_path(@job) %> |

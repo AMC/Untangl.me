@@ -28,6 +28,8 @@ class EventsController < ApplicationController
   # GET /events/new.xml
   def new
     @event = Event.new
+    
+    @event.name = params[:title]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,6 +46,8 @@ class EventsController < ApplicationController
   # POST /events.xml
   def create
     @event = Event.new(params[:event])
+    
+    @event.user_id = current_user.id
 
     respond_to do |format|
       if @event.save
@@ -79,7 +83,7 @@ class EventsController < ApplicationController
     @event.destroy
 
     respond_to do |format|
-      format.html { redirect_to(events_url) }
+      format.html { redirect_to(jobs_url) }
       format.xml  { head :ok }
     end
   end

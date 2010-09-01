@@ -36,6 +36,7 @@ class JobsController < ApplicationController
     @job = Job.new
     @job.url = params[:url]
     @job.name = params[:title]
+        
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @job }
