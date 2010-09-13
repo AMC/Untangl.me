@@ -10,6 +10,7 @@ class JobsController < ApplicationController
     @jobs = Job.where(["user_id = ?", current_user])
     
     @events = Event.where(["user_id = ?", current_user])
+    @date = Date.today
 
     respond_to do |format|
       format.html # index.html.erb
@@ -23,6 +24,7 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])    
     
     @event = Event.find(params[:id])
+    @date = Date.today
 
     respond_to do |format|
       format.html # show.html.erb
